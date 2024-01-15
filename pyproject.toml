@@ -1,0 +1,40 @@
+[project]
+name = "multicaptioneval"
+version = "0.1.0"
+description = "Standarized preprocessing and evaluation of image captions across languages"
+authors = [
+    {name = "MalvinaNikandrou", email = "nikandroumalvina@gmail.com"},
+]
+dependencies = [
+    "pydantic>=2.5.3",
+    "sacrebleu[ko]>=2.4.0",
+    "sacrebleu[ja]>=2.4.0",
+    "jieba>=0.42.1",
+    "pycocoevalcap>=1.2",
+    "spacy>=3.7.2",
+    "pythainlp>=4.0.2",
+    "sudachipy>=0.6.8",
+    "sudachidict-core>=20230927",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+package-type = "library"
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "black>=23.3.0",
+]
+test = [
+    "pytest>=7.4.4",
+]
+
+[flake8]
+max-line-length = 120
