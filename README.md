@@ -3,18 +3,26 @@
 # Multilingual Captioning Evaluation
 
 This repository extends [pycocoevalcap](https://github.com/salaniz/pycocoevalcap/tree/master) for evaluation of
-multilingual coco-style datasets.
+multilingual COCO-style datasets.
 
-Inspired by efforts like sacreBLEU, which aim at standarized, reproducible evaluation scores for BLEU and CIDEr.~
+Inspired by efforts like [sacreBLEU](https://github.com/mjpost/sacrebleu) ([Post, 2018](https://arxiv.org/abs/1804.08771)), which has encouraged reproducible evaluation scores, multicaptioneval aims at facilitating standardized preprocessing and metric computation.
+In particular, multicaptioneval can be used to compute BLEU ([Papineni et al., 2002](https://aclanthology.org/P02-1040.pdf)) and CIDEr ([Vedantam et al., 2014](https://arxiv.org/abs/1411.5726)) scores.
 
-## Requirements
-- Python>=3.9
+In terms of preprocessing, we modify pycocoevalcap steps as follows:
+1. Unicode normalization with the [NFKC](https://unicode.org/reports/tr15/#Norm_Forms) normalization form
+2. Language-based tokenization: We include language-specific tokenizers for Japanese, Korean, Thai, and Chinese. Other languages use the default tokenizer from pycocoevalcap.
+3. Extension of punctuations that are removed from sentences
+
 
 ## Installation
 
-`
+Requirements:
+- Python>=3.9
+
+Clone the repository and run:
+```bash
 pip install -e .
-`
+```
 
 ## Example
 For an example script, see: [example/example_en.py](example/example_en.py)
@@ -23,7 +31,7 @@ For results of the example data across languages, see: [example/example.py](exam
 The example results are from [pycocoevalcap](https://github.com/salaniz/pycocoevalcap/tree/master), and have been translated
 to 7 other languages (see `tests/fixtures`) using the NLLB-200-distilled-1.3B (NLLB Team, 2022) model. 
 
-The results should look as following:
+The results should look as follows:
 
 | Language   | Tokenizer   |   Bleu_1 |   Bleu_2 |   Bleu_3 |   Bleu_4 |   CIDEr |
 |------------|-------------|----------|----------|----------|----------|---------|
