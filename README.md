@@ -19,10 +19,10 @@ In terms of preprocessing, we modify pycocoevalcap steps as follows:
 Requirements:
 - Python>=3.9
 
-Clone the repository and run:
 ```bash
-pip install -e .
+pip install git+git+https://github.com/MalvinaNikandrou/multicaptioneval.git
 ```
+
 
 ## Example
 For an example script, see: [example/example_en.py](example/example_en.py)
